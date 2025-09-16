@@ -1,0 +1,13 @@
+.dropdown-on-icon-button {
+  position: relative;
+}
+
+.dropdown-on-icon-button-menu {
+  top: 16px !important;
+  right: -22px !important;
+  min-width: 8rem !important;
+}
+
+.dropdown-item:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
