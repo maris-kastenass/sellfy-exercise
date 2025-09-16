@@ -13,11 +13,15 @@ const ProductsModal = ({ product, onClose }: ProductsModalProps) => {
         className="modal-backdrop fade show"
         onClick={() => onClose(null)}
       ></div>
-      <div className="products-modal modal-dialog modal-dialog-centered">
+      <div
+        className="products-modal modal-dialog modal-dialog-centered"
+        aria-modal="true"
+        aria-labelledby="products modal"
+      >
         <div className="modal-content">
           <div className="modal-body">
             <h6>
-              <b>Share your product!</b>
+              <strong>Share your product!</strong>
             </h6>
             <div className="border border-2 p-2">
               <img
@@ -38,11 +42,19 @@ const ProductsModal = ({ product, onClose }: ProductsModalProps) => {
           </div>
           <div className="modal-footer border-0">
             <div className="justify-content-around w-100 d-flex">
-              <button type="button" className="btn btn-outline-primary">
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                aria-label="Share on Facebook"
+              >
                 <i className="bi bi-facebook"></i>
                 <span className="ms-2">Share</span>
               </button>
-              <button type="button" className="btn btn-outline-info">
+              <button
+                type="button"
+                className="btn btn-outline-info"
+                aria-label="Tweet on twitter"
+              >
                 <i className="bi bi-twitter"></i>
                 <span className="ms-2">Tweet</span>
               </button>
