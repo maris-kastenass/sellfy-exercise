@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ProductsRowDropdown from '../ProductsRowDropdown/ProductsRowDropdown';
 import ProductsModal from '../ProductsModal/ProductsModal';
+import he from 'he';
 import './ProductsTable.css';
 
 import type { Product } from '../../../types/product';
@@ -15,13 +16,13 @@ const ProductsTable = ({ products, onDelete }: ProductsTableProps) => {
   };
 
   return (
-    <div className="ProductsTable">
+    <div>
       {productForModal && (
         <ProductsModal product={productForModal} onClose={setProductForModal} />
       )}
-      <table className="table border">
+      <table className="products-table table table-responsive-md border w-100">
         <thead>
-          <tr>
+          <tr className="d-none d-md-table-row">
             <th
               scope="col"
               colSpan={2}
@@ -50,16 +51,18 @@ const ProductsTable = ({ products, onDelete }: ProductsTableProps) => {
                 </div>
               </td>
               <td className="col-md-6 text-start align-content-center">
-                <b>{product.name}</b>
-                <p className="mb-0">{product.description}</p>
+                <div>
+                  <b>{he.decode(product.name)}</b>
+                  <p className="mb-0">{he.decode(product.description)}</p>
+                </div>
               </td>
-              <td className="align-content-center">
-                <b>{product.category}</b>
+              <td data-label="Category" className="align-content-center">
+                <b>{he.decode(product.category)}</b>
               </td>
-              <td className="align-content-center">
+              <td data-label="Price" className="align-content-center">
                 <b>${product.price.toFixed(2)}</b>
               </td>
-              <td className="align-content-center">
+              <td data-label="Actions" className="align-content-center">
                 <ProductsRowDropdown
                   productId={product._id}
                   onShareClick={() => {

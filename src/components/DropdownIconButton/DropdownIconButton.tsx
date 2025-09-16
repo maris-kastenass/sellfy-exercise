@@ -3,7 +3,7 @@ import type { DropdownIconButtonProps } from './DropdownIconButton.types';
 
 const DropdownIconButton = ({
   id,
-  iconSrc = '/three-dots-vertical.svg',
+  icon = 'three-dots-vertical',
 }: DropdownIconButtonProps) => {
   return (
     <button
@@ -15,7 +15,7 @@ const DropdownIconButton = ({
       aria-label="Dropdown menu"
       data-bs-auto-close="true"
     >
-      <img src={iconSrc} alt="icon" className="pb-1" />
+      <i className={`bi bi-${icon}`}></i>
     </button>
   );
 };

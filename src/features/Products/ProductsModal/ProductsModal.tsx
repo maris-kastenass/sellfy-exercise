@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import he from 'he';
 import './ProductsModal.css';
 
 import type { ProductsModalProps } from './ProductsModal.types';
@@ -31,11 +32,11 @@ const ProductsModal = ({ product, onClose }: ProductsModalProps) => {
               <img className="w-100" src={product.image_url} />
               <div className="text-primary mt-3">
                 <h6>
-                  <b>{product.name}</b>
+                  <b>{he.decode(product.name)}</b>
                 </h6>
               </div>
               <div>
-                <p className="mb-0">{product.description}</p>
+                <p className="mb-0">{he.decode(product.description)}</p>
               </div>
             </div>
           </div>

@@ -5,3 +5,20 @@
 .product-table-header-text {
   font-weight: normal;
 }
+
+@media (max-width: 768px) {
+  .product-table-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  table.products-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
+  table.products-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+  }
+}
