@@ -10,8 +10,8 @@ import type { ProductsTableProps } from './ProductsTable.types';
 const ProductsTable = ({ products, onDelete }: ProductsTableProps) => {
   const [productForModal, setProductForModal] = useState<Product | null>(null);
 
+  // on Share click opens modal
   const onShare = (product: Product | null) => {
-    console.log('products click', product);
     setProductForModal(product);
   };
 

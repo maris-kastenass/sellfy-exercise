@@ -12,7 +12,9 @@ const ProductsModal = ({ product, onClose }: ProductsModalProps) => {
 
   const copyUrlToClipboard = () => {
     navigator.clipboard.writeText(product.url);
+    // Change button text
     setCopyText('Coped');
+    // After 1 sec. change button text back to default
     setTimeout(() => setCopyText(defaultCopyText), 1000);
   };
 
@@ -29,7 +31,7 @@ const ProductsModal = ({ product, onClose }: ProductsModalProps) => {
               <b>Share your product!</b>
             </h6>
             <div className="border border-2 p-2">
-              <img className="w-100" src={product.image_url} />
+              <img className="products-modal-img" src={product.image_url} />
               <div className="text-primary mt-3">
                 <h6>
                   <b>{he.decode(product.name)}</b>

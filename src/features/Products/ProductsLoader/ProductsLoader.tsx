@@ -14,7 +14,6 @@ const ProductsLoader = () => {
           'https://raw.githubusercontent.com/Sellfy/test-assignment-frontend/refs/heads/master/products.json'
         );
         const result = await response.json();
-        console.log('result:', result);
         setProducts(result.data);
         setLoading(false);
       } catch (error) {
@@ -30,13 +29,15 @@ const ProductsLoader = () => {
     return <p>Loading...</p>;
   }
 
+  // if product array is empty then show this
   if (!products?.length) {
     return <p>No product loaded</p>;
   }
 
-  const deleteProduct = (id: string) => {
+  // when delete pressed removes product from list
+  const deleteProduct = (productId: string) => {
     const newProducts = products.filter((product: Product) => {
-      return product._id !== id;
+      return product._id !== productId;
     });
 
     setProducts(newProducts);
