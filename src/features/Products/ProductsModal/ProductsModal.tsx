@@ -1,25 +1,14 @@
-import { useState } from 'react';
 import he from 'he';
+import CopyUrlButton from '../../../components/CopyButton/CopyUrlButton';
 import './ProductsModal.css';
 
 import type { ProductsModalProps } from './ProductsModal.types';
 
-const defaultCopyText = 'Copy Link';
-
 const ProductsModal = ({ product, onClose }: ProductsModalProps) => {
-  const [copyText, setCopyText] = useState<string>(defaultCopyText);
   if (!product) return null;
 
-  const copyUrlToClipboard = () => {
-    navigator.clipboard.writeText(product.url);
-    // Change button text
-    setCopyText('Coped');
-    // After 1 sec. change button text back to default
-    setTimeout(() => setCopyText(defaultCopyText), 1000);
-  };
-
   return (
-    <div className="modal show fade d-block" tabIndex={-1}>
+    <div className="modal show fade d-block" tabIndex={-1} role="dialog">
       <div
         className="modal-backdrop fade show"
         onClick={() => onClose(null)}
@@ -31,7 +20,12 @@ const ProductsModal = ({ product, onClose }: ProductsModalProps) => {
               <b>Share your product!</b>
             </h6>
             <div className="border border-2 p-2">
-              <img className="products-modal-img" src={product.image_url} />
+              <img
+                className="products-modal-img"
+                src={product.image_url}
+                alt={product.name}
+                loading="lazy"
+              />
               <div className="text-primary mt-3">
                 <h6>
                   <b>{he.decode(product.name)}</b>
@@ -44,11 +38,7 @@ const ProductsModal = ({ product, onClose }: ProductsModalProps) => {
           </div>
           <div className="modal-footer border-0">
             <div className="justify-content-around w-100 d-flex">
-              <button
-                type="button"
-                className="btn btn-outline-primary"
-                data-bs-dismiss="modal"
-              >
+              <button type="button" className="btn btn-outline-primary">
                 <i className="bi bi-facebook"></i>
                 <span className="ms-2">Share</span>
               </button>
@@ -56,14 +46,7 @@ const ProductsModal = ({ product, onClose }: ProductsModalProps) => {
                 <i className="bi bi-twitter"></i>
                 <span className="ms-2">Tweet</span>
               </button>
-              <button
-                type="button"
-                className="btn btn-outline-primary"
-                onClick={copyUrlToClipboard}
-              >
-                <i className="bi bi-copy"></i>
-                <span className="ms-2">{copyText}</span>
-              </button>
+              <CopyUrlButton url={product.url} />
             </div>
           </div>
         </div>

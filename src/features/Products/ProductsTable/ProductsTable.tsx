@@ -47,6 +47,8 @@ const ProductsTable = ({ products, onDelete }: ProductsTableProps) => {
                   <img
                     className="product-table-image"
                     src={product.image_url}
+                    alt={product.name}
+                    loading="lazy"
                   />
                 </div>
               </td>

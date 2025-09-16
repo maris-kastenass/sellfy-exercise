@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import DropdownIconButton from '../../../components/DropdownIconButton/DropdownIconButton';
 import type { ProductsRowDropdownProps } from './ProductsRowDropdown.types';
 import './ProductsRowDropdown.css';
@@ -7,7 +8,10 @@ const ProductsRowDropdown = ({
   onShareClick,
   onDeleteClick,
 }: ProductsRowDropdownProps) => {
-  const dropdownId = 'dropdownIconButton-' + productId;
+  const dropdownId = useMemo(
+    () => `dropdownIconButton-${productId}`,
+    [productId]
+  );
 
   return (
     <div className="dropstart dropdown-on-icon-button">
@@ -21,7 +25,7 @@ const ProductsRowDropdown = ({
             type="button"
             className="dropdown-item btn btn-white back-button d-flex w-100"
             onClick={onShareClick}
-            aria-label="Delete row"
+            aria-label="Share row"
           >
             <i className="bi bi-share-fill"></i>
             <span className="ms-2">Share</span>
